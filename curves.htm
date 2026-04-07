@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+http://www.bit-101.com/blog/?p=3210
+-->
+<html>
+<head>
+<title>curves</title>
+<meta charset='utf-8' />
+<style type="text/css">
+#can-vas {}
+</style>
+
+<script>
+
+function getV()
+{
+  var MYMAX = 16; 
+  var i;
+  do {
+    i = Math.random() * MYMAX * 2 - MYMAX; 
+  } while (~~i == 0)
+  return i;
+}
+
+function rand(x)
+{
+  return Math.random() * x;
+}
+
+window.onload =  (function () {
+
+  var SHIFT = 20;    
+
+  var i, j, canvas, context, points = []; 
+  var numLines = 1; // 2 ... 10
+  var par = location.search.substring(1);
+  var bInvert = false;
+  if (par == 'invert') 
+    bInvert = true;
+  
+//    canvas = $("#canvas")[0];
+  canvas = document.getElementById("canvas");
+
+  var width = (window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth) - SHIFT;
+
+  var height = (window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight) - SHIFT;  
+  
+  canvas.width =  width; 
+  canvas.height = height;
+  context = canvas.getContext("2d");
+  context.lineWidth = 0.5;
+  context.strokeStyle = "black"; 
+  if (bInvert) {
+    context.strokeStyle = "white";
+    context.fillStyle = "black";
+    context.fillRect(0, 0, width, height);
+  }
+
+  for(i = 0; i < 4 * numLines; i += 1) {
+    points.push({x:rand(width), y:rand(height), vx:getV(), vy:getV()});
+  }
+
+  function sample(j) {
+    context.strokeStyle = "rgb(255, 0, 0)"; 
+    context.lineWidth = 3;
+    context.beginPath();
+    context.moveTo(100, 100);
+    context.lineTo(200, 200);
+    context.stroke();
+  }
+
+  function shift() {
+    for(i = 0; i < points.length; i += 1) {
+      points[i].x += points[i].vx;
+      if (points[i].x > width) {
+        points[i].x = width;
+        points[i].vx = getV(); 
+        points[i].vy = getV(); 
+      }
+      if (points[i].x < 0) {
+        points[i].x = 0;
+        points[i].vx = getV(); 
+        points[i].vy = getV(); 
+      }
+      points[i].y += points[i].vy;
+      if (points[i].y > height) {
+        points[i].y = height;
+        points[i].vx = getV(); 
+        points[i].vy = getV(); 
+      }
+      if (points[i].y < 0) {
+        points[i].y = 0;
+        points[i].vx = getV(); 
+        points[i].vy = getV(); 
+      }
+    }
+  }
+
+  function step(j) {
+    context.beginPath();
+    context.moveTo(points[j * 4].x, points[j * 4].y);
+    context.bezierCurveTo(points[j * 4 + 1].x, points[j * 4 + 1].y,
+                        points[j * 4 + 2].x, points[j * 4 + 2].y,
+                        points[j * 4 + 3].x, points[j * 4 + 3].y);
+    context.stroke();
+  }
+  
+  setInterval(function() {
+
+    shift();
+
+    for(j = 0; j < numLines; j += 1) {
+      var DEBUG = false;  // true;
+      if (!DEBUG) {
+        step(j);
+      }
+      if (DEBUG) {  
+        function myarc(x, y)
+        {
+          context.beginPath();
+          context.arc(x, y, 5, 0, 2 * Math.PI);
+          context.stroke();
+        }
+        context.lineWidth = 3;
+        context.strokeStyle = "rgb(255, 0, 0)"; 
+        myarc(points[j * 4].x, points[j * 4].y);
+        context.strokeStyle = "rgb(0, 255, 0)"; 
+        myarc(points[j * 4 + 1].x, points[j * 4 + 1].y);
+        context.strokeStyle = "rgb(0, 0, 255)"; 
+        myarc(points[j * 4 + 2].x, points[j * 4 + 2].y);
+        context.strokeStyle = "rgb(0, 0, 0)"; 
+        myarc(points[j * 4 + 3].x, points[j * 4 + 3].y);
+      }
+    }
+  }, 1000);
+});
+
+</script>
+
+</head>
+<body>
+  <canvas id="canvas"> sorry You have old browser </canvas>
+</body>
+</html>

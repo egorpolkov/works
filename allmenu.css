@@ -1,0 +1,351 @@
+/*
+(c) 2015 by Oleg (http://codepen.io/OlegaHan/pen/LEGxbo)
+*/
+
+body, pre {
+  font-size: 8pt; 
+  line-height: 8pt; 
+  font-family: verdana, arial, helvetica, sans-serif; 
+  color: Gray; 
+  background: White
+}
+pre_ {
+  font-size: 8pt; 
+  font-family: verdana, arial, helvetica, sans-serif; 
+}
+    /*блок меню*/
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul.nav li ul {
+  display: none;
+}
+ul.nav li {
+  list-style: none;
+}
+ul.nav li:hover > ul {
+  display: block;
+}
+ul.nav li {
+  background: darkGray;
+  float: left;     /*делаем меню горизонтальным*/
+  height: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+ul.nav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+ul.nav li ul {
+  display: none;  /*скрываем вложенные пункты*/
+}
+ul.nav { /*задаём высоту и ширину меню*/
+/*
+  height: 60px;
+  width: 600px;
+*/
+}
+     /*Выпадающее меню*/
+ul.nav li:hover {
+  background: lightGray;
+  position: relative; 
+}
+ul.nav li:hover > ul {
+  display: block;
+  position: absolute;
+  top: 25px; /*первый уровень меню раскрывается вниз*/
+  left: 0;
+}
+    /*Второй и последующие уровни вложенности*/
+ul.nav li ul li {
+  height: auto;
+  width: 150px;
+}
+ul.nav li:hover ul li ul {
+  position: absolute;
+  top: 0;
+  left: 150px; /*второй и последующие уровни расскрываются вправо*/
+}
+
+div#maintext {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  back-ground: Yellow; 
+  z-index: -1;
+}
+div#mainmenu {
+  position: fixed;
+  top: 3px;
+  left: 10px;
+  z-index: 1;
+}
+
+.start { 
+  color: white;
+  background: darkGray;
+  float: bottom;     /* left делаем меню горизонтальным*/
+  hei-ght: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+.start a {
+  color: white;
+  text-decoration: none;
+  display: none; /* */
+  padding: 5px 25px 5px 15px;
+}
+
+
+
+
+@media only screen and (max-device-width: 480px) {
+/*
+body, pre {
+  font-size: 8pt; 
+  line-height: 8pt; 
+  font-family: verdana, arial, helvetica, sans-serif; 
+  color: Gray; 
+  background: White
+}
+
+*/
+body{ 
+  width: 480px; 
+}
+pre_ {
+  font-size: 8pt; 
+  font-family: verdana, arial, helvetica, sans-serif; 
+}
+    /*блок меню*/
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul.nav li ul {
+  display: block; /* none; */
+}
+ul.nav li {
+  list-style: none;
+  co-lor: Red;
+}
+ul.nav li:hover > ul {
+  display: block;
+}
+ul.nav li {
+  background: darkGray;
+  float: bottom;     /* left делаем меню горизонтальным*/
+  hei-ght: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+ul.nav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+ul.nav li ul {
+  display: none; /*скрываем вложенные пункты*/
+}
+ul.nav { /*задаём высоту и ширину меню*/
+/*
+  height: 60px;
+  width: 600px;
+*/
+}
+     /*Выпадающее меню*/
+ul.nav li:hover {
+  background: lightGray;
+  position: relative; 
+}
+ul.nav li:hover > ul {
+  display: block;
+  position: relative; /* absolute; */
+  t-op: 25px; /*первый уровень меню раскрывается вниз*/
+  left: 50;  /* 0 */
+}
+    /*Второй и последующие уровни вложенности*/
+ul.nav li ul li {
+  height: auto;
+  width: 150px;
+}
+ul.nav li:hover ul li ul {
+  position: relative; /* absolute; */
+  top: 0;
+  left: 150px; /*второй и последующие уровни расскрываются вправо*/
+}
+
+/*
+ul.nav:hover {
+  display: block;
+}
+ul.nav { 
+  display: none;
+}
+*/
+
+div#maintext {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  back-ground: Yellow; 
+  z-index: -1;
+}
+
+div#mainmenu {
+  position: fixed;
+  top: 3px;
+  left: 10px;
+  z-index: 1;
+}
+
+
+.start { 
+  color: white;
+  background: darkGray;
+  float: bottom;     /* left делаем меню горизонтальным*/
+  hei-ght: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+.start a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+.start:hover > ul.nav {
+  display: block;
+}
+.start > ul.nav { 
+  display: none;
+}
+
+}
+
+
+@media only screen and (max-device-width: 1024px) {
+/*
+body, pre {
+  font-size: 8pt; 
+  line-height: 8pt; 
+  font-family: verdana, arial, helvetica, sans-serif; 
+  color: Gray; 
+  background: White
+}
+
+*/
+body{ 
+  width: 100%; 
+}
+
+    /*блок меню*/
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul.nav li ul {
+  display: block; /* none; */
+}
+ul.nav li {
+  list-style: none;
+  co-lor: Red;
+}
+ul.nav li:hover > ul {
+  display: block;
+}
+ul.nav li {
+  background: darkGray;
+  float: bottom;     /* left делаем меню горизонтальным*/
+  hei-ght: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+ul.nav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+ul.nav li ul {
+  display: none; /*скрываем вложенные пункты*/
+}
+ul.nav { /*задаём высоту и ширину меню*/
+/*
+  height: 60px;
+  width: 600px;
+*/
+}
+     /*Выпадающее меню*/
+ul.nav li:hover {
+  background: lightGray;
+  position: relative; 
+}
+ul.nav li:hover > ul {
+  display: block;
+  position: relative; /* absolute; */
+  t-op: 25px; /*первый уровень меню раскрывается вниз*/
+  left: 50;  /* 0 */
+}
+    /*Второй и последующие уровни вложенности*/
+ul.nav li ul li {
+  height: auto;
+  width: 150px;
+}
+ul.nav li:hover ul li ul {
+  position: relative; /* absolute; */
+  top: 0;
+  left: 150px; /*второй и последующие уровни расскрываются вправо*/
+}
+
+/*
+ul.nav:hover {
+  display: block;
+}
+ul.nav { 
+  display: none;
+}
+*/
+
+div#maintext {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  back-ground: Yellow; 
+  z-index: -1;
+}
+
+div#mainmenu {
+  position: fixed;
+  top: 3px;
+  left: 10px;
+  z-index: 1;
+}
+
+.start { 
+  color: white;
+  background: darkGray;
+  float: bottom;     /* left делаем меню горизонтальным*/
+  hei-ght: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+.start a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+.start:hover > ul.nav {
+  display: block;
+}
+.start > ul.nav { 
+  display: none;
+}
+
+}

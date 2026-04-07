@@ -1,0 +1,47 @@
+﻿* 
+{ 
+  font-family: verdana, arial, helvetica, sans-serif; 
+  font-size: 8pt; 
+} 
+
+ul, #myul {
+  list-style-type: none;
+/*
+  padding: 0;
+*/
+}
+
+#myul {
+  margin: 0;
+/*
+  padding: 0;
+*/
+}
+
+.caret {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.caret::before {
+  content: "+";
+  color: black;
+/*
+  display: inline-block;
+*
+  margin-right: 6px;
+*/
+}
+
+.caret-down::before {
+  content: "-";
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+

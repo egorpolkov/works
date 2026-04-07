@@ -1,0 +1,57 @@
+<html>
+<head><title>timer</title>
+
+<style type="text/css">
+div#t
+{
+  font-size: 150pt;
+
+  position:absolute; 
+  width:90%; 
+  top:30%; 
+  text-align: center;
+  color: #f0f0f0;
+  height: 70%;
+}
+div#b
+{
+  position: relative;
+  left: 90%;
+}
+</style>
+
+<script type="text/javascript">
+var dBe = new Date();
+function lo() {
+  var d, x;
+  var dNo = new Date();
+  var t = Math.round((dNo.getTime() - dBe.getTime()) / 1000);
+  d = t % 60;
+  x = (d < 10) ? '0' + d : d;
+  t = (t - d) / 60;
+  d = t % 60;
+  x = ((d < 10) ? ('0' + d) : d) + ' : ' + x;
+  t = (t - d) / 60;
+  x = t + ' : ' + x;
+  document.getElementById('t').innerHTML = x;
+  setTimeout("lo()", 1000);
+}
+function be() {
+  var dBe = new Date();
+  lo();
+}
+function ke(e) {
+
+// !!! todo
+
+  if ((window.event || e).keyCode == 32)
+    be();
+}
+</script>
+
+</head>
+<body onload="be()" onkeydown="ke()">
+  <div id="t"></div>
+  </div>
+</body>
+</html>

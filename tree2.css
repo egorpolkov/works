@@ -1,0 +1,77 @@
+﻿* 
+{ 
+  font-family: verdana, arial, helvetica, sans-serif; 
+  font-size: 10pt; 
+} 
+
+ul, #myUL {
+  list-style-type: none;
+  padding: 0;
+}
+
+#myUL {
+  margin: 0;
+/*
+*/
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  font-weight: bold;
+  background: Brown;
+  height: 25px;
+  width: 525px;
+  border: 3px solid white; 
+  color: white;
+  display: block;
+
+
+}
+
+.caret::before {
+  content: "+";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+/*
+*
+*/
+}
+
+.caret-down::before {
+  content: "-";
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/*
+ul.nav li {
+  background: darkGray;
+  float: left;
+  height: 25px;
+  list-style: none;  
+  border: 3px solid white; 
+}
+ul.nav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 25px 5px 15px;
+}
+
+
+  background: darkGray;
+  height: 25px;
+  border: 3px solid white; 
+  color: white;
+  display: block;
+  text-decoration: none;
+
+*/

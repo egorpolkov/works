@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset="utf-8">
+<title>Sample Banner</title>
+<!--[if lte IE 8]>
+<![endif]-->
+<script>
+
+function mybug(t, s) {
+  document.write(t + ' : ' + s.toString() + '<br/>');
+}
+
+//var ip = getenv('REMOTE_ADDR');//IP-адрес посетителя
+//var br = getenv('HTTP_USER_AGENT'); //Браузер посетителя
+//mybug('ip', ip ); //ширина экрана монитора
+//mybug('br', br ); //ширина экрана монитора
+
+mybug('screen.width         ', screen.width          ); //ширина экрана монитора
+mybug('screen.height        ', screen.height         ); //высота экрана монитора
+mybug('screen.colorDepth    ', screen.colorDepth     ); //Битовая глубина цветовой гаммы
+//mybug('screen.pixelDepth    ', screen.pixelDepth     ); //Разрешение экрана монитора
+mybug('navigator.appCodeName', navigator.appCodeName ); //Кодовое имя браузера.
+mybug('navigator.appName    ', navigator.appName     ); //Имя браузера / Тип броузера
+mybug('navigator.userAgent  ', navigator.userAgent   ); //Агент пользователя
+mybug('navigator.appVersion ', navigator.appVersion  ); //Версия броузера
+//mybug('navigator.language   ', navigator.language    ); //Язык броузера
+mybug('navigator.platform   ', navigator.platform    ); // ОС
+//mybug('navigator.javaEnabled', navigator.javaEnabled ); // Проверяет, включён ли Java.
+mybug('navigator.mimeTypes  ', navigator.mimeTypes   ); //Типы файлов (MIME)
+//mybug('appCodeName          ', appCodeName           ); //номер кода приложения
+//mybug('cpuClass             ', cpuClass              ); // Класс процессора (x86 и пр.).
+//mybug('systemLanguage       ', systemLanguage        ); // Системный язык
+//mybug('appMinorVersion      ', appMinorVersion       ); // Минор-версия приложения
+//Узнать имя пользователя (IE):
+//var ws = new ActiveXObject("WScript.Network");
+//mybug(ws.ComputerName + " " + ws.UserName);
+
+var isMobile = {
+  Android: function() { return navigator.userAgent.match(/Android/i); },
+  BlackBerry: function() { return navigator.userAgent.match(/BlackBerry/i); },
+  iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+  Opera: function() {  return navigator.userAgent.match(/Opera Mini/i); },
+  Windows: function() { return navigator.userAgent.match(/IEMobile/i); },
+  any: function() { 
+    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+  }
+};
+
+if (isMobile.any()) {
+  mybug('<br/>', 'is Mobile')
+}
+else {
+  mybug('<br/>', 'no Mobile')
+}      
+      
+</script>
+</head>
+<body>
+<br/>
+</body>
+</html>
